@@ -2,8 +2,6 @@
 
 Aplicação web que transforma uma descrição em linguagem natural em código **HTML e CSS**, mostrando o código gerado e um preview ao vivo. Feita com JavaScript puro e a API da Groq (modelo `openai/gpt-oss-120b`).
 
-<!-- Adicione aqui um GIF curto do funcionamento e o link da demonstração -->
-
 ## O que faz
 
 - **Gerar**: descreva um componente ("botão roxo que cresce ao passar o mouse") e receba o código.
