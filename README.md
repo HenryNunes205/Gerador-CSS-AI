@@ -25,7 +25,7 @@ Ao refinar, o código anterior vai junto na requisição, como histórico da con
 
 ## Como usar
 
-**Só testar:** abra o link da demonstração (adicione aqui o endereço). Não precisa instalar nada.
+**Só testar:** [abra a demonstração](https://henrynunes205.github.io/Gerador-CSS-AI/). Não precisa instalar nada.
 
 **Rodar a sua própria cópia:** a chave da API não está no código, então você precisa do seu próprio Worker.
 
