@@ -1,0 +1,264 @@
+:root {
+    --fundo: #09090b;
+    --superficie: #141419;
+    --borda: #27272a;
+    --texto: #fafafa;
+    --texto-suave: #a1a1aa;
+    --verde: #22c55e;
+    --verde-escuro: #16a34a;
+    --codigo: #34d399;
+    --erro-texto: #fca5a5;
+    --erro-borda: #7f1d1d;
+    --erro-fundo: #1c1011;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    padding: clamp(20px, 5vw, 40px);
+    background: var(--fundo);
+    color: var(--texto);
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: clamp(2rem, 7vw, 2.75rem);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: var(--texto);
+}
+
+.destaque {
+    color: var(--verde);
+}
+
+.subtitulo {
+    margin: 12px 0 8px;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+h2 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    max-width: 640px;
+    margin-top: 20px;
+    padding: 16px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: var(--superficie);
+    color: var(--texto);
+    font-size: 1rem;
+    line-height: 1.5;
+    outline: none;
+}
+
+textarea::placeholder {
+    color: var(--texto-suave);
+}
+
+button {
+    width: 100%;
+    max-width: 640px;
+    margin-top: 10px;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: var(--verde);
+    color: #052e16;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--verde);
+    outline-offset: 2px;
+}
+
+.acoes {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.acoes button {
+    width: auto;
+    margin-top: 0;
+}
+
+.botao-gerar,
+.botao-refinar {
+    flex: 1 1 140px;
+}
+
+.botao-gerar:hover:not(:disabled) {
+    background: var(--verde-escuro);
+}
+
+.botao-refinar {
+    background: transparent;
+    color: var(--verde);
+    border: 1px solid var(--verde);
+}
+
+.botao-refinar:hover:not(:disabled) {
+    background: rgba(34, 197, 94, 0.12);
+}
+
+.botao-limpar,
+.botao-copiar {
+    background: transparent;
+    color: var(--texto);
+    border: 1px solid var(--borda);
+}
+
+.botao-limpar:hover:not(:disabled),
+.botao-copiar:hover:not(:disabled) {
+    border-color: var(--verde);
+}
+
+.botao-copiar {
+    width: auto;
+    margin-top: 0;
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    font-weight: normal;
+}
+button.carregando::after {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-left: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-top-color: #000;
+    border-radius: 50%;
+    vertical-align: -2px;
+    animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.mensagem {
+    width: 100%;
+    max-width: 640px;
+    margin-top: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--erro-borda);
+    border-radius: 12px;
+    background: var(--erro-fundo);
+    color: var(--erro-texto);
+    font-size: 0.875rem;
+}
+
+
+.resultado {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.painel {
+    min-width: 0;
+}
+
+.cabecalho-bloco {
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.bloco-codigo,
+.resultado-codigo {
+    width: 100%;
+    height: 420px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: var(--superficie);
+}
+
+.bloco-codigo {
+    padding: 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--codigo);
+    overflow: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.bloco-codigo:empty::before {
+    content: "O código gerado aparece aqui.";
+    color: var(--texto-suave);
+    font-family: "Roboto", sans-serif;
+}
+
+@media (max-width: 860px) {
+    .resultado {
+        grid-template-columns: 1fr;
+    }
+
+    .bloco-codigo,
+    .resultado-codigo {
+        height: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .botao-gerar {
+        flex-basis: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    button {
+        transition: none;
+    }
+
+    button.carregando::after {
+        animation-duration: 3s;
+    }
+}
